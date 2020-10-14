@@ -43,7 +43,7 @@ describe('timeout()', function () {
       it('should respond with 503 Request timeout', function (done) {
         var server = createServer(null, null, function (req, res) {
           assert.ok(req.timedout)
-          res.end('Hello')
+          res.end()
         })
 
         request(server)
@@ -54,7 +54,7 @@ describe('timeout()', function () {
       it('should pass the error to next()', function (done) {
         var server = createServer(null, null, function (req, res) {
           assert.ok(req.timedout)
-          res.end('Hello')
+          res.end()
         })
 
         request(server)
@@ -114,7 +114,7 @@ describe('timeout()', function () {
           assert.ok(!req.timedout)
           setTimeout(function () {
             assert.ok(req.timedout)
-            res.end('Hello')
+            res.end()
           }, 1000)
         })
 
@@ -129,7 +129,7 @@ describe('timeout()', function () {
           assert.ok(!req.timedout)
           setTimeout(function () {
             assert.ok(req.timedout)
-            res.end('Hello')
+            res.end()
           }, 1000)
         })
 
@@ -145,7 +145,7 @@ describe('timeout()', function () {
           assert.ok(!req.timedout)
           setTimeout(function () {
             assert.ok(req.timedout)
-            res.end('Hello')
+            res.end()
           }, 5000)
         })
 
@@ -158,7 +158,7 @@ describe('timeout()', function () {
         function (req, res) { setTimeout(function () { req.resetTimeout(120) }, 50) },
         function (req, res) {
           assert.ok(req.timedout)
-          res.end('Hello')
+          res.end()
         })
 
       request(server)
@@ -175,7 +175,7 @@ describe('timeout()', function () {
           assert.ok(!req.timedout)
           setTimeout(function () {
             assert.ok(req.timedout)
-            res.end('Hello')
+            res.end()
           }, 1000)
         })
 
@@ -190,7 +190,7 @@ describe('timeout()', function () {
           assert.ok(!req.timedout)
           setTimeout(function () {
             assert.ok(req.timedout)
-            res.end('Hello')
+            res.end()
           }, 1000)
         })
 
@@ -206,7 +206,7 @@ describe('timeout()', function () {
           assert.ok(!req.timedout)
           setTimeout(function () {
             assert.ok(req.timedout)
-            res.end('Hello')
+            res.end()
           }, 5000)
         })
 
@@ -219,7 +219,7 @@ describe('timeout()', function () {
         function (req, res) { req.addTimeout(90) },
         function (req, res) {
           assert.ok(req.timedout)
-          res.end('Hello')
+          res.end()
         })
 
       request(server)
@@ -238,7 +238,7 @@ describe('timeout()', function () {
         },
         function (req, res) {
           assert.ok(req.timedout)
-          res.end('Hello')
+          res.end()
         })
 
       request(server)
@@ -257,7 +257,7 @@ describe('timeout()', function () {
         },
         function (req, res) {
           assert.strict.equal(req.getTimeout(), 0)
-          res.end('Hello')
+          res.end()
           done()
         })
 
